@@ -31,7 +31,7 @@ class BaseInternetSpeedSensor(CoordinatorEntity[InternetSpeedCoordinator], Senso
     _attr_has_entity_name = True
     _attr_device_info = DeviceInfo(
         identifiers={(DOMAIN, "speedtest-dom")},
-        name="Internet Speed",
+        name="SpeedTest",
         manufacturer="Custom",
         entry_type=DeviceEntryType.SERVICE,
     )

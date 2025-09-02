@@ -16,6 +16,8 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
     async def async_step_user(self, user_input: dict | None = None) -> FlowResult:
+        if self._async_current_entries():
+            return self.async_abort(reason="single_instance_allowed")
         errors: dict[str, str] = {}
         if user_input is not None:
             minutes = user_input[CONF_SCAN_INTERVAL]
@@ -24,7 +26,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 errors["base"] = "interval_too_short"
             else:
                 return self.async_create_entry(
-                    title="Internet Speed",
+                    title="SpeedTest",
                     data={CONF_SCAN_INTERVAL: seconds},
                 )
 
