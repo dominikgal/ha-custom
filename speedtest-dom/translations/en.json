@@ -1,0 +1,27 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "SpeedTest (Custom)",
+        "description": "Set how often to run the speed test. Frequent tests can load your network.",
+        "data": {
+          "scan_interval": "Refresh interval (minutes)"
+        }
+      }
+    },
+    "error": {
+      "interval_too_short": "Interval too short. Please choose at least 5 minutes."
+    },
+    "options": {
+      "step": {
+        "init": {
+          "title": "SpeedTest Options",
+          "description": "Adjust how often the speed test runs.",
+          "data": {
+            "scan_interval": "Refresh interval (minutes)"
+          }
+        }
+      }
+    }
+  }
+}
