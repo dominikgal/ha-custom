@@ -1,4 +1,4 @@
-DOMAIN = "speedtest-dom"
+DOMAIN = "speedtestdotnet"
 PLATFORMS: list[str] = ["sensor", "button"]
 
 CONF_SCAN_INTERVAL = "scan_interval"  # seconds

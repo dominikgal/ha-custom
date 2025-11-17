@@ -19,7 +19,7 @@ class RunSpeedTestButton(CoordinatorEntity[InternetSpeedCoordinator], ButtonEnti
     _attr_icon = "mdi:speedometer"
     _attr_unique_id = "speedtest-dom_run_now"
     _attr_device_info = DeviceInfo(
-        identifiers={(DOMAIN, "speedtest-dom")},
+        identifiers={(DOMAIN, "speedtestdotnet")},
         name="SpeedTest",
         manufacturer="Custom",
         entry_type=DeviceEntryType.SERVICE,

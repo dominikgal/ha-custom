@@ -30,7 +30,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 class BaseInternetSpeedSensor(CoordinatorEntity[InternetSpeedCoordinator], SensorEntity):
     _attr_has_entity_name = True
     _attr_device_info = DeviceInfo(
-        identifiers={(DOMAIN, "speedtest-dom")},
+        identifiers={(DOMAIN, "speedtestdotnet")},
         name="SpeedTest",
         manufacturer="Custom",
         entry_type=DeviceEntryType.SERVICE,
