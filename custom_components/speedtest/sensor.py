@@ -62,7 +62,7 @@ class BaseInternetSpeedSensor(CoordinatorEntity[InternetSpeedCoordinator], Senso
 class DownloadSpeedSensor(BaseInternetSpeedSensor):
     _attr_name = "Download"
     _attr_icon = "mdi:download"
-    _attr_unique_id = "speedtest-dom_download"
+    _attr_unique_id = "speedtest_download"
     _attr_native_unit_of_measurement = UnitOfDataRate.MEGABITS_PER_SECOND
     _attr_state_class = SensorStateClass.MEASUREMENT
 
@@ -77,7 +77,7 @@ class DownloadSpeedSensor(BaseInternetSpeedSensor):
 class UploadSpeedSensor(BaseInternetSpeedSensor):
     _attr_name = "Upload"
     _attr_icon = "mdi:upload"
-    _attr_unique_id = "speedtest-dom_upload"
+    _attr_unique_id = "speedtest_upload"
     _attr_native_unit_of_measurement = UnitOfDataRate.MEGABITS_PER_SECOND
     _attr_state_class = SensorStateClass.MEASUREMENT
 
@@ -92,7 +92,7 @@ class UploadSpeedSensor(BaseInternetSpeedSensor):
 class PingSensor(BaseInternetSpeedSensor):
     _attr_name = "Ping"
     _attr_icon = "mdi:timer-sand"
-    _attr_unique_id = "speedtest-dom_ping"
+    _attr_unique_id = "speedtest_ping"
     _attr_native_unit_of_measurement = UnitOfTime.MILLISECONDS
     _attr_state_class = SensorStateClass.MEASUREMENT
 
