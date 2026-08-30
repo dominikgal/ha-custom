@@ -13,8 +13,7 @@ class SpeedTestClient:
         try:
             import speedtest  # provided by requirement in manifest
             
-            st = speedtest.Speedtest()
-            st.get_servers()
+            st = speedtest.Speedtest(timeout=10)
             st.get_best_server()
             st.download()
             st.upload(pre_allocate=False)
