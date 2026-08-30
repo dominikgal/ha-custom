@@ -21,9 +21,9 @@ ATTR_BYTES_RECEIVED = "bytes_received"
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities) -> None:
     coordinator: InternetSpeedCoordinator = hass.data[DOMAIN][entry.entry_id]
     entities: list[SensorEntity] = [
-        DownloadSpeedSensor(coordinator),
-        UploadSpeedSensor(coordinator),
-        PingSensor(coordinator),
+        DownloadSpeedSensor(coordinator, entry),
+        UploadSpeedSensor(coordinator, entry),
+        PingSensor(coordinator, entry),
     ]
     async_add_entities(entities)
 
@@ -62,9 +62,12 @@ class BaseInternetSpeedSensor(CoordinatorEntity[InternetSpeedCoordinator], Senso
 class DownloadSpeedSensor(BaseInternetSpeedSensor):
     _attr_name = "Download"
     _attr_icon = "mdi:download"
-    _attr_unique_id = "speedtest_download"
     _attr_native_unit_of_measurement = UnitOfDataRate.MEGABITS_PER_SECOND
     _attr_state_class = SensorStateClass.MEASUREMENT
+
+    def __init__(self, coordinator: InternetSpeedCoordinator, entry: ConfigEntry) -> None:
+        super().__init__(coordinator)
+        self._attr_unique_id = f"{entry.entry_id}_speedtest_download"
 
     @property
     def native_value(self) -> float | None:
@@ -77,9 +80,12 @@ class DownloadSpeedSensor(BaseInternetSpeedSensor):
 class UploadSpeedSensor(BaseInternetSpeedSensor):
     _attr_name = "Upload"
     _attr_icon = "mdi:upload"
-    _attr_unique_id = "speedtest_upload"
     _attr_native_unit_of_measurement = UnitOfDataRate.MEGABITS_PER_SECOND
     _attr_state_class = SensorStateClass.MEASUREMENT
+
+    def __init__(self, coordinator: InternetSpeedCoordinator, entry: ConfigEntry) -> None:
+        super().__init__(coordinator)
+        self._attr_unique_id = f"{entry.entry_id}_speedtest_upload"
 
     @property
     def native_value(self) -> float | None:
@@ -92,9 +98,12 @@ class UploadSpeedSensor(BaseInternetSpeedSensor):
 class PingSensor(BaseInternetSpeedSensor):
     _attr_name = "Ping"
     _attr_icon = "mdi:timer-sand"
-    _attr_unique_id = "speedtest_ping"
     _attr_native_unit_of_measurement = UnitOfTime.MILLISECONDS
     _attr_state_class = SensorStateClass.MEASUREMENT
+
+    def __init__(self, coordinator: InternetSpeedCoordinator, entry: ConfigEntry) -> None:
+        super().__init__(coordinator)
+        self._attr_unique_id = f"{entry.entry_id}_speedtest_ping"
 
     @property
     def native_value(self) -> float | None:
